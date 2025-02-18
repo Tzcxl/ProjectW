@@ -1,0 +1,32 @@
+{
+  "Archer": {
+    "characterName": "Archer",
+    "health": 50,
+    "attackPower": 40,
+    "defense": 15,
+    "initiative": 10,
+    "actions": 3,
+    "initialActions": 3,
+    "spritePath": "Sprites/Archer"
+  },
+  "Knight": {
+    "characterName": "Knight",
+    "health": 80,
+    "attackPower": 30,
+    "defense": 25,
+    "initiative": 5,
+    "actions": 2,
+    "initialActions": 2,
+    "spritePath": "Sprites/Knight"
+  },
+  "Mage": {
+    "characterName": "Mage",
+    "health": 40,
+    "attackPower": 60,
+    "defense": 10,
+    "initiative": 15,
+    "actions": 3,
+    "initialActions": 3,
+    "spritePath": "Sprites/Mage"
+  }
+}
