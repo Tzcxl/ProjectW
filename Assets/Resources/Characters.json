@@ -1,6 +1,7 @@
 {
   "Archer": {
     "characterName": "Archer",
+    "displayName" : "Archer",
     "health": 50,
     "attackPower": 40,
     "defense": 15,
@@ -11,6 +12,7 @@
   },
   "Knight": {
     "characterName": "Knight",
+    "displayName": "Knight",
     "health": 80,
     "attackPower": 30,
     "defense": 25,
@@ -21,6 +23,7 @@
   },
   "Mage": {
     "characterName": "Mage",
+    "displayName": "Mage",
     "health": 40,
     "attackPower": 60,
     "defense": 10,
