@@ -3,9 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using SquadManagerNamespace;
-using System.IO;
 using Newtonsoft.Json;
-
+using System.IO;
 public class Swaper : MonoBehaviour
 {
     [Header("UI Settings")]
@@ -17,6 +16,9 @@ public class Swaper : MonoBehaviour
 
     // Список персонажей; если слот пустой – значение null.
     private List<SquadManagerNamespace.SquadManager.Member> squadMembers = new List<SquadManagerNamespace.SquadManager.Member>();
+
+    // Ссылка на компонент отображения информации о персонаже
+    private CharacterInfoDisplay characterInfoDisplay;
 
     void Start()
     {
@@ -32,6 +34,9 @@ public class Swaper : MonoBehaviour
 
         // Гарантируем, что длина списка равна количеству слотов
         AdjustSquadMembersList();
+
+        // Получаем ссылку на CharacterInfoDisplay
+        characterInfoDisplay = FindObjectOfType<CharacterInfoDisplay>();
 
         // Обновляем UI для отображения отряда
         UpdateSquadUI();
@@ -91,6 +96,13 @@ public class Swaper : MonoBehaviour
                 }
                 if (slotNameText != null)
                     slotNameText.text = $"Name: {character.characterName}";
+            }
+
+            // Убедимся, что на каждом слоте есть коллайдер для обработки событий наведения мыши
+            if (characterSlots[i].GetComponent<Collider2D>() == null)
+            {
+                // Добавляем коллайдер, если его нет
+                characterSlots[i].AddComponent<BoxCollider2D>();
             }
         }
     }
@@ -195,5 +207,26 @@ public class Swaper : MonoBehaviour
 
         File.WriteAllText(squadJsonPath, JsonConvert.SerializeObject(saveObj, Formatting.Indented));
         Debug.Log("Отряд сохранён в " + squadJsonPath);
+    }
+
+    /// <summary>
+    /// Обработчик событий коллайдера для наведения мыши.
+    /// </summary>
+    public void OnMouseEnterSlot(Collider2D other)
+    {
+        int index = System.Array.IndexOf(characterSlots, other.gameObject);
+        if (index >= 0 && squadMembers[index] != null)
+        {
+            var character = squadMembers[index];
+            characterInfoDisplay.ShowCharacterInfo(character); // Показываем информацию о персонаже
+        }
+    }
+
+    /// <summary>
+    /// Обработчик событий коллайдера для выхода мыши.
+    /// </summary>
+    public void OnMouseExitSlot(Collider2D other)
+    {
+        characterInfoDisplay.HideCharacterInfo(); // Скрываем информацию, когда мышь уходит
     }
 }

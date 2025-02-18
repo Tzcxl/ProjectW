@@ -1,15 +1,15 @@
 {
   "squadName": "Default Squad",
   "members": {
-    "PA1": "Mage",
-    "PA2": "",
+    "PA1": "Knight",
+    "PA2": "Knight",
     "PA3": "",
     "PA4": "",
     "PB1": "Archer",
-    "PB2": "Knight",
+    "PB2": "",
     "PB3": "",
     "PB4": "",
-    "PC1": "",
+    "PC1": "Mage",
     "PC2": "",
     "PC3": "",
     "PC4": ""

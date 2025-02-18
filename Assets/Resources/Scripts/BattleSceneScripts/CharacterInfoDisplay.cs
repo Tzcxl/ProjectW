@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UI;
 
 public class CharacterInfoDisplay : MonoBehaviour
 {
@@ -18,6 +18,7 @@ public class CharacterInfoDisplay : MonoBehaviour
         infoPanel.SetActive(false); // По умолчанию панель скрыта
     }
 
+    // Метод для отображения информации о персонаже
     public void ShowCharacterInfo(SquadManagerNamespace.SquadManager.Member character)
     {
         if (character == null) return;
@@ -44,6 +45,7 @@ public class CharacterInfoDisplay : MonoBehaviour
         }
     }
 
+    // Метод для скрытия панели с информацией
     public void HideCharacterInfo()
     {
         infoPanel.SetActive(false);
